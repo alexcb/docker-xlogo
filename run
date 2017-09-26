@@ -1,0 +1,22 @@
+#!/bin/bash
+IMAGE=mofo.ca/alexcb/xlogo-example
+
+if [[ -z ${UID} ]]; then
+   echo "UID was not correctly passed" 
+   exit 1
+fi
+
+if [[ -z ${DISPLAY} ]]; then
+   echo "DISPLAY was not correctly passed" 
+   exit 1
+fi
+
+docker run --rm \
+           -tdi \
+           --net="host" \
+           --name=xlogo-example \
+           --privileged=true \
+           -e HOSTUID=${UID} \
+           -e DISPLAY=${DISPLAY} \
+           -v /tmp/.X11-unix:/tmp/.X11-unix \
+           mofo.ca/alexcb/xlogo-example
