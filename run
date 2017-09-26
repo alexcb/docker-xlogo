@@ -19,4 +19,4 @@ docker run --rm \
            -e HOSTUID=${UID} \
            -e DISPLAY=${DISPLAY} \
            -v /tmp/.X11-unix:/tmp/.X11-unix \
-           mofo.ca/alexcb/xlogo-example
+           ${IMAGE}
